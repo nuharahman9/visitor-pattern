@@ -35,6 +35,14 @@ class Sub : public Base {
 			} 
 			else { return right_child; }	
 		}
+		  void accept(Visitor* visitor, int index) { 
+			if (i == 0) { 
+	 			 visitor->visit_sub_begin(this); 
+			}
+			else if (i == 1) { visitor->visit_sub_middle(this); }  
+			else if (i == 2) { visitor->visit_sub_end(this); } 
+			else { cout << "Invalid input" << endl; }
+  		  }
 
 	};
 

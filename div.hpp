@@ -30,6 +30,14 @@ class Div : public Base {
 			if (i == 0) { return left_child; } 
 			else { return right_child; }
 		}
+		void accept(Visitor* visitor, int index) { 
+			if (i == 0) { 
+			  visitor->visit_div_begin(this); 
+			}
+			else if (i == 1) { visitor->visit_div_middle(this); }  
+			else if (i == 2) { visitor->visit_div_end(this); } 
+			else { cout << "Invalid input" << endl; }
+  		 }
 };
 
 #endif //__DIV_HPP__
