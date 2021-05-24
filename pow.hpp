@@ -4,6 +4,7 @@
 #include <cmath> 
 #include <string>
 #include "base.hpp"
+#include "visitor.hpp"
 
 using namespace std;
 
@@ -22,15 +23,39 @@ public:
     string output = out.str(); 
     return output; 
   }
-          virtual int number_of_children() { return 2; }
-        virtual Base* get_child(int i) { 
-	  if (i == 0) { return baseNum; } 
-	  else { return exponent; }
-	}
+  virtual int number_of_children() {
+  	int num = 0;
+        if(baseNum!= nullptr)
+        	++num;
+        if(exponent!= nullptr)
+        	++num;
+        return num;
+   }
+
+  virtual Base* get_child(int i) {
+  	if(i < number_of_children()){
+        	if(i == 0){
+                	return baseNum;
+                }
+                if(i == 1){
+                        return exponent;
+                                }
+                        }
+
+   }
+
+virtual void accept(Visitor* visitor, int index) {
+                        if(index == 0)
+                                visitor->visit_pow_begin(this);
+                        if(index == 1)
+                                visitor->visit_pow_middle(this);
+                        if(index == 2)
+                                visitor->visit_pow_end(this);
+		}
 
 private: 
-  Base* baseNum; 
-  Base* exponent; 
+  Base* baseNum = nullptr; 
+  Base* exponent = nullptr; 
 
 };
 #endif
