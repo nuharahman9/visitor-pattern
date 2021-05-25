@@ -2,6 +2,7 @@
 #define __ADD_HPP__
 #include <sstream>
 #include <string>
+#include <iostream> 
 #include "base.hpp"
 #include "visitor.hpp"
 
@@ -31,15 +32,16 @@ public:
 	return num;
      }
 
-        virtual Base* get_child(int i) { 
+  virtual Base* get_child(int i) { 
 	    if(i < number_of_children()) {
 		if (i == 0){ 
 			return leftOp;
 		} 
 		if (i == 1){ 
 			return rightOp; 
-			}
+    }  
 	}
+     else { return nullptr; } 
 }
 
 	virtual void accept(Visitor* visitor, int index) {
@@ -50,6 +52,7 @@ public:
 		if (index == 2)
 			visitor->visit_add_end(this);
 	}
+
 
 private: 
   Base* leftOp = nullptr; 

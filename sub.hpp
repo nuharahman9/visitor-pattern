@@ -27,6 +27,7 @@ class Sub : public Base {
 			string out = number.str();
 			return out;
 		}
+
 		virtual int number_of_children() {
        			 int num = 0;
        			 if(left_child!= nullptr)
@@ -36,7 +37,7 @@ class Sub : public Base {
        			 return num;
     		 }
         virtual Base* get_child(int i) {
-            if(i < number_of_children()) {
+            if(i < number_of_children()){
                 if (i == 0){
                         return left_child;
                 }
@@ -44,7 +45,8 @@ class Sub : public Base {
                         return right_child;
                         }
        		 }
-	}
+          else { return nullptr; } 
+	      }
 
 
         virtual void accept(Visitor* visitor, int index) {
@@ -55,6 +57,7 @@ class Sub : public Base {
                 if (index == 2)
                         visitor->visit_sub_end(this);
        		 }
+
 
 	};
 

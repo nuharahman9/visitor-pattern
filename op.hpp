@@ -1,6 +1,8 @@
 #ifndef __OP_HPP__
 #define __OP_HPP__
+
 #include <iostream>
+
 #include <sstream>
 #include <string>
 #include <iomanip> 
@@ -26,17 +28,20 @@ public:
      return 0; 
    }
    virtual Base* get_child(int i) { 
-	return nullptr; 
-}    
-      void accept(Visitor* visitor, int index) { 
+	    return nullptr; 
+    }    
+
+ void accept(Visitor* visitor, int index) { 
 	if (index == 0) { 
 	  visitor->visit_op(this); 
-	}
-	else { cout << "Invalid input" << endl; }
-   }
+	  }
+ }
+
 
 
 private: 
     double value;   
   }; 
  #endif
+
+

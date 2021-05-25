@@ -26,6 +26,7 @@ class Div : public Base {
 			string out = number.str();
 			return out;
 		}
+
 	       
 		virtual int number_of_children() {
                 	int num = 0;
@@ -45,6 +46,7 @@ class Div : public Base {
                                 return right_child;
                         }
                 }
+                else { return nullptr; } 
 
         }
 
@@ -57,6 +59,9 @@ class Div : public Base {
                         visitor->visit_div_end(this);
 		
 	}
+
+
+
 };
 
 #endif //__DIV_HPP__

@@ -22,6 +22,7 @@ public:
     string output = out.str(); 
     return output; 
   }
+
    virtual int number_of_children() {
    	int num = 0;
         if(leftOp!= nullptr)
@@ -39,6 +40,7 @@ public:
                         return rightOp;
                         }
                  }
+            else { return nullptr; } 
         }
 
 
@@ -50,6 +52,8 @@ public:
                 if (index == 2)
                         visitor->visit_mult_end(this);
                  }
+
+
 
 
 private: 

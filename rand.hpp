@@ -20,10 +20,14 @@ class Rand : public Base {
 	virtual std::string stringify() { return std::to_string(value1);}
 		virtual int number_of_children() { return 0; } 
                 virtual Base* get_child(int i) { return nullptr; }
-		
-		virtual void accept(Visitor* visitor, int index) {
-			visitor->visit_rand(this);
-		}
+
+		virtual void accept(Visitor* visitor, int index) { 
+			if (index == 0) { 
+	 			 visitor->visit_add_begin(this); 
+		 	} 
+	
+  }
+
 	private:
 	double value1;
 };
