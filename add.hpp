@@ -2,8 +2,9 @@
 #define __ADD_HPP__
 #include <sstream>
 #include <string>
+#include <iostream> 
 #include "base.hpp"
-
+#include "visitor.hpp"
 using namespace std;
 
 class Add: public Base {
@@ -26,6 +27,14 @@ public:
 		if (i == 0) { return leftOp;} 
 		else { return rightOp; }
 	}
+   void accept(Visitor* visitor, int index) { 
+	if (i == 0) { 
+	  visitor->visit_add_begin(this); 
+	}
+	else if (i == 1) { visitor->visit_add_middle(this); }  
+	else if (i == 2) { visitor->visit_add_end(this); } 
+	else { cout << "Invalid input" << endl; }
+   }
 
 private: 
   Base* leftOp; 

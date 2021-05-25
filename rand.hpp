@@ -23,6 +23,12 @@ class Rand : public Base {
 		}
 		virtual int number_of_children() { return 0; } 
                 virtual Base* get_child(int i) { return nullptr; }
+		void accept(Visitor* visitor, int index) { 
+			if (i == 0) { 
+	 			 visitor->visit_add_begin(this); 
+		 	} 
+			else { cout << "Invalid input" << endl; }
+   		}
 	private:
 	string number;
 	double value1;

@@ -26,6 +26,14 @@ public:
 	if (i == 0) { return leftOp; }
 	else { return rightOp; } 
     }
+    void accept(Visitor* visitor, int index) { 
+	if (i == 0) { 
+	  visitor->visit_mult_begin(this); 
+	}
+	else if (i == 1) { visitor->visit_mult_middle(this); }  
+	else if (i == 2) { visitor->visit_mult_end(this); } 
+	else { cout << "Invalid input" << endl; }
+   }
 
 private: 
   Base* leftOp; 
