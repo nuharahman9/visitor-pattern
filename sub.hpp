@@ -17,6 +17,7 @@ class Sub : public Base {
 			left_child = left;
 			right_child = right;
 		}
+		~Sub() { delete left_child; delete right_child; } 
 		virtual double evaluate(){
 			return left_child->evaluate() - right_child->evaluate();
 		}

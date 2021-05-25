@@ -54,7 +54,7 @@ void VisitorLaTeX::visit_mult_begin(Mult* node){
 }
 
 void VisitorLaTeX::visit_mult_middle(Mult* node){
-    str += "\cdot";
+    str += "\\cdot";
 }
 
 void VisitorLaTeX::visit_mult_end(Mult* node){
@@ -62,7 +62,7 @@ void VisitorLaTeX::visit_mult_end(Mult* node){
 }
 
 void VisitorLaTeX::visit_div_begin(Div* node){
-    str += "{\frac";
+    str += "{\\frac";
 }
 
 void VisitorLaTeX::visit_div_middle(Div* node){
@@ -89,5 +89,8 @@ std::string VisitorLaTeX::PrintLaTeX(Base* ptr){
            for(itPtr; !itPtr->is_done(); itPtr->next()){
                 itPtr->current_node()->accept(this,itPtr->current_index());
            }
-           return this->getString();
+           string returnV = this->getString(); 
+           delete itPtr; 
+	   return returnV;           
+           
 }

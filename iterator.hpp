@@ -19,7 +19,7 @@ class Iterator {
 
     public:
         Iterator(Base* ptr);
-
+	~Iterator() {} 
         void next();
         bool is_done();
         Base* current_node();

@@ -13,6 +13,7 @@ public:
     leftOp = left; 
     rightOp = right; 
   }
+  ~Mult() { delete leftOp; delete rightOp; }
   virtual double evaluate() { 
     return leftOp->evaluate() * rightOp->evaluate(); 
   }

@@ -32,5 +32,7 @@ int main() {
     std::cout << add->stringify() << " => \n LaTeX: ";
 
     std::cout << vPtr->PrintLaTeX(add) << "\n";
+      
+     delete vPtr;  
     return 0;
 }

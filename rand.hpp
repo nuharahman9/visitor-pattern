@@ -17,6 +17,8 @@ class Rand : public Base {
 	        	value1 = rand() % 100;
 	    		return value1; 
 		}
+	
+		~Rand() { }  
 	virtual std::string stringify() { return std::to_string(value1);}
 		virtual int number_of_children() { return 0; } 
                 virtual Base* get_child(int i) { return nullptr; }

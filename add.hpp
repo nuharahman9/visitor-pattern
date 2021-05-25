@@ -14,6 +14,7 @@ public:
     leftOp = left; 
     rightOp = right; 
   }
+  ~Add() { delete leftOp; delete rightOp; } 
   virtual double evaluate() { 
     return leftOp->evaluate() + rightOp->evaluate(); 
   }

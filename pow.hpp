@@ -14,6 +14,7 @@ public:
     baseNum = left; 
     exponent = right; 
   }
+  ~Pow() { delete baseNum; delete exponent; } 
   virtual double evaluate() { 
     return pow(baseNum->evaluate(), exponent->evaluate()); 
   }

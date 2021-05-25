@@ -118,7 +118,7 @@ TEST(PrintLatex, Multiply) {
   Base* root = new Mult(new Op(2), op1);
 
     VisitorLaTeX* vPtr = new VisitorLaTeX();
-    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({2}\cdot{5})}$");
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({2}\\cdot{5})}$");
 }
 TEST(PrintLatex, Subtract) {
   Base* op1 = new Op(5);
@@ -138,7 +138,7 @@ TEST(PrintLatex, Divide) {
   Base* root = new Div(new Op(2), op1);
 
     VisitorLaTeX* vPtr = new VisitorLaTeX();
-    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\frac{2}{2}}$");
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\\frac{2}{2}}$");
 }
 TEST(PrintLatex, compositeTwo) {
   Base* op1 = new Op(2);
@@ -147,7 +147,7 @@ TEST(PrintLatex, compositeTwo) {
   Base* root = new Div(multiply, power); 
 
     VisitorLaTeX* vPtr = new VisitorLaTeX();
-    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\frac{({2}\cdot{5})}{({5}^{2})}}$");
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\\frac{({2}\\cdot{5})}{({5}^{2})}}$");
 }
 
 #endif

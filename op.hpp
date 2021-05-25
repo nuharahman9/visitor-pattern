@@ -15,6 +15,7 @@ public:
   Op(double val) : Base() { 
     value = val;  
   }
+  ~Op() { } 
   virtual double evaluate() { 
     return value; 
   }
