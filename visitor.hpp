@@ -42,6 +42,7 @@ class Visitor{
         virtual void visit_pow_end(Pow* node) = 0;
 };
 
+
 class VisitorLaTeX : public Visitor {
     private:
 	std::string str;

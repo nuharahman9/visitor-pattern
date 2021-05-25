@@ -45,7 +45,7 @@ class Sub : public Base {
                         return right_child;
                         }
        		 }
-          else { return nullptr; } 
+           
 	      }
 
 

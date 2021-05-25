@@ -1,6 +1,7 @@
 #ifndef __TEST__
 #define __TEST__
-#include "gtest/gtest.h" 
+#include "gtest/gtest.h"
+#include "../visitor.hpp" 
 #include "../iterator.hpp"
 #include "../sub.hpp"
 #include "../add.hpp" 
@@ -94,6 +95,59 @@ TEST(getChild, Pow) {
    Base* eqn  = new Pow(op, op2);
    EXPECT_EQ(eqn->get_child(0), op);
    EXPECT_EQ(eqn->get_child(1), op2);
+}
+TEST(PrintLatex, compositeOne) { 
+  Base* op1 = new Op(1); 
+  Base* eqn = new Sub(new Op(5), new Op(0));
+  Base* root = new Add(op1, eqn); 
+    
+    VisitorLaTeX* vPtr = new VisitorLaTeX(); 
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({1}+{({5}-{0})})}$"); 
+
+}
+TEST(PrintLatex, Power) {
+  Base* op1 = new Op(5);
+  Base* root = new Pow(op1, new Op(2));
+      
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({5}^{2})}$");
+
+} 
+TEST(PrintLatex, Multiply) {
+  Base* op1 = new Op(5);
+  Base* root = new Mult(new Op(2), op1);
+
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({2}\cdot{5})}$");
+}
+TEST(PrintLatex, Subtract) {
+  Base* op1 = new Op(5);
+  Base* root = new Sub(new Op(2), op1);
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({2}-{5})}$");
+}
+TEST(PrintLatex, Add) {
+  Base* op1 = new Op(5);
+  Base* root = new Add(new Op(2), op1);
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${({2}+{5})}$");
+}
+
+TEST(PrintLatex, Divide) {
+  Base* op1 = new Op(2);
+  Base* root = new Div(new Op(2), op1);
+
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\frac{2}{2}}$");
+}
+TEST(PrintLatex, compositeTwo) {
+  Base* op1 = new Op(2);
+  Base* multiply = new Mult(op1, new Op(5)); 
+  Base* power = new Pow(new Op(5), new Op(2));
+  Base* root = new Div(multiply, power); 
+
+    VisitorLaTeX* vPtr = new VisitorLaTeX();
+    EXPECT_EQ(vPtr->PrintLaTeX(root), "${\frac{({2}\cdot{5})}{({5}^{2})}}$");
 }
 
 #endif

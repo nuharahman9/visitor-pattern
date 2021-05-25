@@ -54,7 +54,7 @@ void VisitorLaTeX::visit_mult_begin(Mult* node){
 }
 
 void VisitorLaTeX::visit_mult_middle(Mult* node){
-    str += "\\cdot";
+    str += "\cdot";
 }
 
 void VisitorLaTeX::visit_mult_end(Mult* node){
@@ -62,7 +62,7 @@ void VisitorLaTeX::visit_mult_end(Mult* node){
 }
 
 void VisitorLaTeX::visit_div_begin(Div* node){
-    str += "{\\frac";
+    str += "{\frac";
 }
 
 void VisitorLaTeX::visit_div_middle(Div* node){
