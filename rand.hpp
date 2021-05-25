@@ -23,7 +23,7 @@ class Rand : public Base {
 
 		virtual void accept(Visitor* visitor, int index) { 
 			if (index == 0) { 
-	 			 visitor->visit_add_begin(this); 
+	 			 visitor->visit_rand(this); 
 		 	} 
 	
   }

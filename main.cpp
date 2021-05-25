@@ -7,20 +7,11 @@
 #include "sub.hpp"
 #include "mult.hpp"
 #include "div.hpp"
-#include "pow.hpp"
-
+#include "pow.hpp" 
 #include<iomanip>
 #include <iostream>
 #include <string>
-std::string PrintLaTeX(Base* ptr){
-    Iterator* itPtr = new Iterator(ptr);
 
-    VisitorLaTeX* vPtr = new VisitorLaTeX();
-	for(itPtr; !itPtr->is_done(); itPtr->next()){
-		itPtr->current_node()->accept(vPtr,itPtr->current_index());
-	}
-    return vPtr->getString();
-}
 
 int main() {
     Base* op1 = new Op(1);
@@ -34,11 +25,12 @@ int main() {
     Pow* pow1 = new Pow(op2, op3);
     Add* add1 = new Add(op2, op3);
     Sub* sub2 = new Sub(pow1, add1);
-
     Add* add = new Add(div1, sub2);
+
+    VisitorLaTeX* vPtr = new VisitorLaTeX(); 
 
     std::cout << add->stringify() << " => \n LaTeX: ";
 
-    std::cout << PrintLaTeX(add) << "\n";
+    std::cout << vPtr->PrintLaTeX(add) << "\n";
     return 0;
 }

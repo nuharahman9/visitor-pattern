@@ -1,5 +1,5 @@
 #include "visitor.hpp"
-
+#include "iterator.hpp"
 #include "base.hpp"
 #include "op.hpp"
 #include "rand.hpp"
@@ -83,4 +83,11 @@ void VisitorLaTeX::visit_pow_middle(Pow* node){
 
 void VisitorLaTeX::visit_pow_end(Pow* node){
     str += ")}";
+}
+std::string VisitorLaTeX::PrintLaTeX(Base* ptr){
+           Iterator* itPtr = new Iterator(ptr);
+           for(itPtr; !itPtr->is_done(); itPtr->next()){
+                itPtr->current_node()->accept(this,itPtr->current_index());
+           }
+           return this->getString();
 }

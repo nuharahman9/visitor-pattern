@@ -41,7 +41,7 @@ public:
 			return rightOp; 
     }  
 	}
-     else { return nullptr; } 
+     
 }
 
 	virtual void accept(Visitor* visitor, int index) {

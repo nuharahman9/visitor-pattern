@@ -40,8 +40,8 @@ public:
                 if(i == 1){
                         return exponent;
                                 }
-                        }
-
+        }
+ 
    }
 
 virtual void accept(Visitor* visitor, int index) {
@@ -51,16 +51,8 @@ virtual void accept(Visitor* visitor, int index) {
                                 visitor->visit_pow_middle(this);
                         if(index == 2)
                                 visitor->visit_pow_end(this);
-		}
+}
 
-     void accept(Visitor* visitor, int index) { 
-	if (i == 0) { 
-	  visitor->visit_pow_begin(this); 
-	}
-	else if (i == 1) { visitor->visit_pow_middle(this); }  
-	else if (i == 2) { visitor->visit_pow_end(this); } 
-	else { cout << "Invalid input" << endl; }
-   }
 
 private: 
   Base* baseNum = nullptr; 

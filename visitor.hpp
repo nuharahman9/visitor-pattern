@@ -1,7 +1,11 @@
 #ifndef __VISITOR_HPP__
 #define __VISITOR_HPP__
-
+#include <string>
+#include "iterator.hpp"
+#include "base.hpp"
+class Iterator;  
 class Op;
+class Base; 
 class Rand;
 class Add;
 class Sub;
@@ -42,7 +46,6 @@ class VisitorLaTeX : public Visitor {
     private:
 	std::string str;
 	
-	
     public:
 	VisitorLaTeX();
 
@@ -65,6 +68,7 @@ class VisitorLaTeX : public Visitor {
         virtual void visit_pow_begin(Pow* node);
         virtual void visit_pow_middle(Pow* node);
         virtual void visit_pow_end(Pow* node);
+	std::string PrintLaTeX(Base* ptr); 
 };
 
 #endif //__VISITOR_HPP__

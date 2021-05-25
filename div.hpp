@@ -46,7 +46,7 @@ class Div : public Base {
                                 return right_child;
                         }
                 }
-                else { return nullptr; } 
+                
 
         }
 
